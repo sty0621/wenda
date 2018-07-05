@@ -1,4 +1,4 @@
-package com.niuker.wenda.controller;
+package com.niuker.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;

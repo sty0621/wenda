@@ -1,4 +1,4 @@
-package com.niuker.wenda.model;
+package com.niuker.model;
 
 import java.util.Date;
 

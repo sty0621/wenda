@@ -1,4 +1,4 @@
-<mapper namespace="com.niuker.wenda.dao.QuestionDAO">
+<mapper namespace="com.niuker.dao.QuestionDAO">
 <sql id="table">question</sql>
 <sql id="selectFields">id,title, content,comment_count,created_date,user_id
 </sql>

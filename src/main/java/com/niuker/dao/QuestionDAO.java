@@ -1,4 +1,4 @@
-package com.niuker.wenda.dao;
+package com.niuker.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.niuker.wenda.model.Question;
+import com.niuker.model.Question;
 
 @Mapper
 public interface QuestionDAO {

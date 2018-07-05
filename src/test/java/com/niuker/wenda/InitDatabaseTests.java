@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.niuker.wenda.dao.QuestionDAO;
-import com.niuker.wenda.dao.UserDAO;
-import com.niuker.wenda.model.Question;
-import com.niuker.wenda.model.User;
+import com.niuker.dao.QuestionDAO;
+import com.niuker.dao.UserDAO;
+import com.niuker.model.Question;
+import com.niuker.model.User;
 
 import org.junit.Assert;
 
