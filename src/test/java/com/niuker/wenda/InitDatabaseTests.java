@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.niuker.wenda.dao.UserDAO;
 import com.niuker.wenda.model.User;
 
+import org.junit.Assert;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class InitDatabaseTests {
@@ -28,7 +30,17 @@ public class InitDatabaseTests {
 			user.setPassword("");
 			user.setSalt("");
 			userDAO.addUser(user);
+			
+			user.setPassword("xx");
+			userDAO.updatePassword(user);
 		}
+		
+		Assert.assertEquals("xx", userDAO.selectById(1).getPassword());
+		
+		userDAO.deleteById(1);
+		
+		Assert.assertNull(userDAO.selectById(1));
+		
 	}
 
 }
