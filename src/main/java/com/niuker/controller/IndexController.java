@@ -8,6 +8,9 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.assertj.core.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,17 +22,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.niuker.aspect.LogAspect;
+import com.niuker.service.WendaService;
+
 import net.bytebuddy.implementation.bytecode.constant.DefaultValue;
 
-@Controller
+//@Controller
 public class IndexController {
+	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+	
+	@Autowired
+	WendaService wendaService;
 	
 //	@RequestMapping("/")
-	@RequestMapping(path = {"/","/index"})
-	@ResponseBody
-	public String index(HttpSession httpSession) {
-		return "Hello NowCoder" + httpSession.getAttribute("msg");
-	}
+//	@RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET})
+//	@ResponseBody
+//	public String index(HttpSession httpSession) {
+//		logger.info("VISIT HOME");
+//		return wendaService.getMessage(2) + "Hello NowCoder" + httpSession.getAttribute("msg");
+//	}
 	
 //	@RequestMapping(path = {"/profile/{userId}"})
 //	@ResponseBody
