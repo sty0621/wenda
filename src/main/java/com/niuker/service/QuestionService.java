@@ -18,9 +18,13 @@ public class QuestionService {
 		return questionDAO.selectLatestQuestion(userId, offset, limit);
 	}
 	
+	public List<Question> getAllQuestion() {
+		return questionDAO.selectAll();
+	}
 	
-	
-	
+	public Question getQuestionbyId(int id) {
+		return questionDAO.selectbyId(id);
+	}
 	
 	
 	

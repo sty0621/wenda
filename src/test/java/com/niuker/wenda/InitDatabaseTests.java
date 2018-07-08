@@ -13,6 +13,7 @@ import com.niuker.dao.QuestionDAO;
 import com.niuker.dao.UserDAO;
 import com.niuker.model.Question;
 import com.niuker.model.User;
+import com.niuker.service.QuestionService;
 
 import org.junit.Assert;
 
@@ -58,6 +59,12 @@ public class InitDatabaseTests {
 //		
 //		Assert.assertNull(userDAO.selectById(1));
 		System.out.println(questionDAO.selectLatestQuestion(0, 0, 10));
+		
+//		System.out.println(questionDAO.selectbyId(2).getCreateDate());
+//		System.out.println(questionDAO.selectbyId(2).getCommentCount());
+//		System.out.println(questionDAO.selectbyId(2).getTitle());
+//		System.out.println(questionDAO.selectbyId(2).getUserId());
+//		System.out.println(questionDAO.selectbyId(2).getContent());
 	}
 
 }
