@@ -20,7 +20,7 @@ public interface QuestionDAO {
             ") values (#{title},#{content},#{createDate},#{userId},#{commentCount})"})
     int addQuestion(Question question);
 
-    List<Question> selectLatestQuestion(@Param("userId") int userId,
+    List<Question> selectLatestQuestions(@Param("userId") int userId,
     		                            @Param("offset") int offset,
     		                            @Param("limit") int limit);
     

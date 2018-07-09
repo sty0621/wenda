@@ -58,13 +58,13 @@ public class InitDatabaseTests {
 //		userDAO.deleteById(1);
 //		
 //		Assert.assertNull(userDAO.selectById(1));
-		System.out.println(questionDAO.selectLatestQuestion(0, 0, 10));
+//		System.out.println(questionDAO.selectLatestQuestions(0, 0, 10));
 		
-//		System.out.println(questionDAO.selectbyId(2).getCreateDate());
-//		System.out.println(questionDAO.selectbyId(2).getCommentCount());
-//		System.out.println(questionDAO.selectbyId(2).getTitle());
-//		System.out.println(questionDAO.selectbyId(2).getUserId());
-//		System.out.println(questionDAO.selectbyId(2).getContent());
+		System.out.println("CreateDate: " + questionDAO.selectbyId(2).getCreateDate());
+		System.out.println("CommentCount: " + questionDAO.selectbyId(2).getCommentCount());
+		System.out.println("Title: " + questionDAO.selectbyId(2).getTitle());
+		System.out.println("UserId: " + questionDAO.selectbyId(2).getUserId());
+		System.out.println("Content: " + questionDAO.selectbyId(2).getContent());
 	}
 
 }

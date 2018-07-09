@@ -15,7 +15,7 @@ public class QuestionService {
 	
 	
 	public List<Question> getLayestQuestion(int userId, int offset, int limit) {
-		return questionDAO.selectLatestQuestion(userId, offset, limit);
+		return questionDAO.selectLatestQuestions(userId, offset, limit);
 	}
 	
 	public List<Question> getAllQuestion() {

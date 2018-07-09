@@ -34,21 +34,20 @@ public class HomeController {
 	@RequestMapping(path = {"/user/{userId}"}, method = {RequestMethod.GET})
 	public String getIndex(Model model, @PathVariable("userId") int userId) {
 		
-		model.addAttribute("vos", questionService.getQuestionbyId(userId));
+		model.addAttribute("vos", getQuestions(userId, 0, 10));
 		return "index";
 	}
 	
 	@RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET})
 	public String index(Model model) {
 		
-		model.addAttribute("vos", getQuestions());
+		model.addAttribute("vos", getQuestions(0, 0, 10));
 		return "index";
 	}
 	
 	
-	public List<ViewObject> getQuestions(){
-		//List<Question> questionList = questionService.getLayestQuestion(0, 0, 10);
-		List<Question> questionList = questionService.getAllQuestion();
+	public List<ViewObject> getQuestions(int userId, int offest, int limit){
+		List<Question> questionList = questionService.getLayestQuestion(userId, offest, limit);
 		List<ViewObject> vos = new ArrayList<ViewObject>();
 		for(Question question : questionList) {
 			ViewObject vo = new ViewObject();
