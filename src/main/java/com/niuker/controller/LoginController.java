@@ -22,7 +22,7 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(path = {"/reg"}, method = {RequestMethod.POST})
+	@RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
 	public String getIndex(Model model, 
 						   @RequestParam("password") String password,
 						   @RequestParam("username") String username) {
