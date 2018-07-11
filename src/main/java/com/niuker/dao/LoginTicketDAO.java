@@ -27,7 +27,7 @@ public interface LoginTicketDAO {
 //    User selectByName(String name);
 
     @Update({"update ", TABLE_NAME, " set status=#{status} where ticket=#{ticket}"})
-    void updatePassword(@Param("ticket") String ticket, @Param("status") int status);
+    void updateStatus(@Param("ticket") String ticket, @Param("status") int status);
 //
 //    @Delete({"delete from ", TABLE_NAME, " where id=#{id}"})
 //    void deleteById(int id);
