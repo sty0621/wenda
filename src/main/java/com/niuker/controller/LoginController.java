@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class LoginController {
 	public String reg(Model model, 
 						   @RequestParam("password") String password,
 						   @RequestParam("username") String username,
+						   @RequestParam(value = "next", required = false) String next,
 						   HttpServletResponse response) {
 		try {
 			Map<String, String> map = userService.register(username, password);
@@ -37,6 +39,9 @@ public class LoginController {
 				Cookie cookie = new Cookie("ticket", map.get("ticket"));
 				cookie.setPath("/");
 				response.addCookie(cookie);
+				if(StringUtils.isNotBlank(next)) {
+					return "redirect:" + next;
+				}
 				return "redirect:/";
 			}else {
 				model.addAttribute("msg", map.get("msg"));
@@ -53,6 +58,7 @@ public class LoginController {
 	public String login(Model model, 
 						   @RequestParam("password") String password,
 						   @RequestParam("username") String username,
+						   @RequestParam(value = "next", required = false) String next,
 						   @RequestParam(value = "rememberme", defaultValue = "false") boolean rememberme,
 						   HttpServletResponse response) {
 		try {
@@ -61,6 +67,9 @@ public class LoginController {
 				Cookie cookie = new Cookie("ticket", map.get("ticket"));
 				cookie.setPath("/");
 				response.addCookie(cookie);
+				if(StringUtils.isNotBlank(next)) {
+					return "redirect:" + next;
+				}
 				return "redirect:/";
 			}else {
 				model.addAttribute("msg", map.get("msg"));
@@ -75,14 +84,16 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path = {"/reglogin"}, method = {RequestMethod.GET})
-	public String getIndex(Model model) {
+	public String getIndex(Model model,
+			               @RequestParam(value = "next", required = false) String next) {
+		model.addAttribute("next", next);
 		return "login";
 	}
 	
 	@RequestMapping(path = {"/logout"}, method = {RequestMethod.GET})
 	public String logout(@CookieValue("ticket") String ticket) {
 		userService.logout(ticket);
-		return "rediect:/";
+		return "redirect:/";
 	}
 	
 	

@@ -41,16 +41,16 @@ public class InitDatabaseTests {
 //			user.setPassword("xx");
 //			userDAO.updatePassword(user);
 //			
-			Question question = new Question();
-			question.setCommentCount(i);
-			Date date = new Date();
-			date.setTime(date.getTime() + 1000 * 3600 * i);
-			question.setCreateDate(date);
-			question.setUserId(i + 1);
-			question.setTitle(String.format("TITLE%d", i));
-			question.setContent(String.format("BalaBala Content %d", i));
-			
-			questionDAO.addQuestion(question);
+//			Question question = new Question();
+//			question.setCommentCount(i);
+//			Date date = new Date();
+//			date.setTime(date.getTime() + 1000 * 3600 * i);
+//			question.setCreateDate(date);
+//			question.setUserId(i + 1);
+//			question.setTitle(String.format("TITLE%d", i));
+//			question.setContent(String.format("BalaBala Content %d", i));
+//			
+//			questionDAO.addQuestion(question);
 		}
 		
 //		Assert.assertEquals("xx", userDAO.selectById(1).getPassword());
