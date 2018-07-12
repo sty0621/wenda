@@ -15,11 +15,11 @@ public interface QuestionDAO {
     String TABLE_NAME = " question ";
     String INSET_FIELDS = " title, content, created_date, user_id, comment_count ";
     String SELECT_FIELDS = " id, " + INSET_FIELDS;
-
+    
     @Insert({"insert into ", TABLE_NAME, "(", INSET_FIELDS,
             ") values (#{title},#{content},#{createDate},#{userId},#{commentCount})"})
     int addQuestion(Question question);
-
+    
     List<Question> selectLatestQuestions(@Param("userId") int userId,
     		                            @Param("offset") int offset,
     		                            @Param("limit") int limit);
@@ -29,6 +29,6 @@ public interface QuestionDAO {
     
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
     Question selectbyId(int id);
-
-
+    
+    
 }
