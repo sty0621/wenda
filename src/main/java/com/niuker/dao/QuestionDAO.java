@@ -28,7 +28,7 @@ public interface QuestionDAO {
     List<Question> selectAll();
     
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
-    Question selectbyId(int id);
+    Question selectById(int id);
     
     
 }

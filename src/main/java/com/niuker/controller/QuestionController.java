@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.niuker.model.HostHolder;
 import com.niuker.model.Question;
 import com.niuker.service.QuestionService;
+import com.niuker.service.UserService;
 import com.niuker.util.WendaUtil;
 
 @Controller
@@ -22,6 +25,9 @@ public class QuestionController {
 
 	@Autowired
 	QuestionService questionService;
+	
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	HostHolder hostHolder;
@@ -51,7 +57,13 @@ public class QuestionController {
 		return WendaUtil.getJSONString(1, "失败");
 	}
 	
-	
+	@RequestMapping(value = "/question/{qid}")
+	public String questionDetail(Model model, @PathVariable("qid") int qid) {
+		Question question = questionService.selectById(qid);
+		model.addAttribute("question", question);
+		model.addAttribute("user", userService.getUser(question.getUserId()));
+		return "detail";
+	}
 	
 	
 	
