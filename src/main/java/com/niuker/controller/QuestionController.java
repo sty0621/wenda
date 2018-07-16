@@ -1,6 +1,8 @@
 package com.niuker.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.niuker.model.Comment;
+import com.niuker.model.EntityType;
 import com.niuker.model.HostHolder;
 import com.niuker.model.Question;
+import com.niuker.model.ViewObject;
+import com.niuker.service.CommentService;
 import com.niuker.service.QuestionService;
 import com.niuker.service.UserService;
 import com.niuker.util.WendaUtil;
@@ -28,6 +34,9 @@ public class QuestionController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	CommentService commentService;
 	
 	@Autowired
 	HostHolder hostHolder;
@@ -62,6 +71,18 @@ public class QuestionController {
 		Question question = questionService.selectById(qid);
 		model.addAttribute("question", question);
 		model.addAttribute("user", userService.getUser(question.getUserId()));
+		
+		List<Comment> commentList = commentService.getCommentByEntity(qid, EntityType.ENTITY_QUESTION);
+		List<ViewObject> comments = new ArrayList<ViewObject>();
+		for(Comment comment : commentList) {
+			ViewObject vo = new ViewObject();
+			vo.set("comment", comment);
+			vo.set("user", userService.getUser(comment.getUserId()));
+			comments.add(vo);
+		}
+		
+		model.addAttribute("comments", comments);
+		
 		return "detail";
 	}
 	
