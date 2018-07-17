@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Comment {
 	private int id;
 	private int userId;
